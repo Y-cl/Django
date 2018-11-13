@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link  href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .qqBox{
+            {#width: 70%;#}
+            height: 600px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin:auto;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        .headImg{
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin:10px 10px;
+        }
+        .headImg img{
+            width: 44px;
+            height: 44px;
+            border-radius:50%;
+        }
+        .context{
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        }
+        .liRight span{
+            display:block;
+            font-size: 16px;
+            height: 31px;
+            line-height: 31px;
+        }
+        .liRight span:last-child{
+            font-size: 14px;
+            color: #767676;
+            line-height:15px;
+            overflow: hidden;
+        }
+        .conRight{
+            -webkit-box-flex: 1;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+        }
+        .Righthead{
+            width: 100%;
+            height: 42px;
+            border-bottom: 1px solid #ccc;
+        }
+        .headName{
+            width: auto;
+            height: 100%;
+            line-height: 42px;
+            margin-left: 32px;
+            font-family: "微软雅黑";
+            font-size: 18px;
+            float: left;
+        }
+        .RightCont{
+            -webkit-box-flex: 1;
+            overflow-y: scroll;
+        }
+
+        .RightCont::-webkit-scrollbar{
+            width: 15px;
+        }
+        .RightCont ul{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .RightCont li{
+            width: 100%;
+            height: 50px;
+            /*display: -webkit-box;
+            -webkit-box-orient: horizontal;*/
+            margin-top: 10px;
+        }
+        .newsall{
+            width: 100%;
+            height: auto;
+        }
+        .nesHead{
+           width: auto;
+            max-width: 44px;
+            height: auto;
+            max-height: 44px;
+            border-radius: 50%;
+            margin-left:15px ;
+            float: right;
+        }
+        .nesHead img{
+            width: auto;
+            max-width: 44px;
+            height: auto;
+            max-height: 44px;
+            border-radius: 50%;
+        }
+        .news{
+            width: auto;
+            max-width: 50%;
+            height: auto;
+            background: #eeeeee;
+            padding:5px 20px;
+            margin: 4px;
+            line-height: 30px;
+            {#font-size: 14px;#}
+            border-radius:10px;
+            margin-left: 10px;
+            position: relative;
+            float: right;
+        }
+        .news .jiao{
+            position: absolute;
+            right: -8px;
+            top: 10px;
+        }
+         .answerall{
+             width: 100%;
+             height: auto;
+         }
+        .answerHead{
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin-left:15px ;
+            float: left;
+        }
+        .answerHead img{
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+        }
+        .answers{
+            width: auto;
+            max-width: 50%;
+            height: auto;
+            background: #eeeeee;
+            padding:5px 20px;
+            margin: 4px;
+            line-height: 30px;
+            border-radius:10px;
+            margin-left: 10px;
+            position: relative;
+            float: left;
+            text-align: left;
+        }
+        .answers .jiao{
+            position: absolute;
+            left: -8px;
+            top: 10px;
+        }
+        .RightFoot{
+            width: 100%;
+            height: 118px;
+            border-top: 1px solid #ccc;
+            position: relative;
+        }
+        .sendBtn{
+            width: 68px;
+            height: 25px;
+            background: #0188fb;
+            border: none;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            color: white;
+        }
+        .bg{
+            background: #ebebec;
+        }
+        .youyong{
+            width: 12px;
+            height: 12px;
+            margin-bottom: 4px;
+            margin-right: 5px;
+        }
+        .meiyong{
+            width: 12px;
+            height: 12px;
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+        .btn1{
+            border: none;
+            background-color: #eeeeee;
+            {#border-right: 1px solid gray;#}
+            box-shadow: none;
+            border-radius: 0%;
+        }
+        .btn2{
+            border: none;
+            background-color: #eeeeee;
+            {#border-left: 1px solid gray;#}
+            box-shadow: none;
+            border-radius: 0%;
+
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+{% csrf_token %}
+
+<header class=" col-md-6 col-sm-10 col-sm-12 qqBox">
+	<div class="BoxHead">
+		<div class="headImg">
+			<img src="{% static 'img/6.jpg' %}"/>
+		</div>
+	</div>
+	<div class="context">
+
+		<div class="conRight">
+			<div class="Righthead">
+				<div class="headName">小V</div>
+			</div>
+			<div class="RightCont">
+				<form action="/home" method="get" class="API">
+				<ul class="newsList">
+                    <li>
+	        			<div class="answerHead"><img src="{% static 'img/6.jpg' %}"/></div>
+	        			<div class="answers"><img class="jiao" src="{% static 'img/20170926103645_03_02.jpg' %}">
+                            <span class="lead1">如何联系老师？</span>
+                            <br>
+                            <span class="lead2">微专业答疑</span>
+                            <br>
+                            <span class="lead3">课程无法播放</span>
+                            <br>
+                            <span class="lead4">课程审核</span>
+                            <br>
+                        </div>
+                    </li>
+                    <div class="clear"></div>
+				</ul>
+				</form>
+			</div>
+			<div class="RightFoot">
+				<div class="inputBox">
+                    <form action="/chat" method="get">
+                        <textarea id="dope" name="ques" style="width: 99%;height: 75px; border: none;outline: none;resize: none" name="" rows="" cols=""></textarea>
+					    <input type="button" class="sendBtn" value="发送(S)" >
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script>
+
+    function AJ(ssm){
+         {#ssm = $.trim($("#dope").val());#}
+		if(ssm==''){
+			alert('不能为空');
+		}else{
+			$('#dope').val('');
+		    var str='';
+		    str+='<li name="news">'+'<div class="newsall">'+
+				'<div class="nesHead"><img src="{% static 'img/police.jpg' %}"/></div>'+
+				'<div class="news"><img class="jiao" src="{% static 'img/jiao.jpg' %}">'+ssm+'</div>'+
+			    '</div>'+'</li>';
+            $('.newsList').append(str);
+            A = $.ajax({
+			    type:"get",
+			    url:"/chat/",
+			    async:true,
+			    data:{
+                    'ques': ssm,
+	        	},
+	        });
+
+	        A.done(function(){
+	        	var arr=A.responseText ;
+	            var answer='';
+	            answer+='<li>'+'<div class="answerall">'+
+	        			'<div class="answerHead"><img src="{% static 'img/6.jpg' %}"/></div>'+
+	        			'<div class="answers"><img class="jiao" src="{% static 'img/20170926103645_03_02.jpg' %}">'+arr+
+	        		'<br >'+
+                    '<a  class="btn btn-default btn1" role="button" name="btn1" >'+
+                    '<img src="{% static 'img/youyong.png' %}" class="youyong">'+'有用'+'</a>'+
+                   '<a  class="btn btn-default btn2" role="button" name="btn2" >'+
+                    '<img src="{% static 'img/wuyong.png' %}" class="meiyong">'+'没用'+'</a>'+'</div>'+'</div>'+'</li>'+'<div class="clear"></div>';
+	            $('.newsList').append(answer);
+	            $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight );
+	            $('.btn1').click(function () {
+	                $(this).attr('disabled',true);
+                    $('.btn2').attr('disabled',true);
+
+
+
+                })
+                $('.btn2').click(function () {
+                    $(this).attr('disabled',true);
+                    $('.btn1').attr('disabled',true);
+                     $.ajax({
+                    type:"POST",
+                    url:"/youyong/",
+			        async:true,
+			        data:{
+                        'type':'invalid'
+	        	    },
+                    {#success:alert('fff')#}
+                });
+            {#check.preventDefault();#}
+                })
+	        });
+        }
+    };
+
+    $('.lead1').click(function () {
+        var yd = $('.lead1').text();
+        AJ(yd);
+    });
+    $('.lead2').click(function () {
+        var yd = $('.lead2').text();
+        AJ(yd);
+    });
+    $('.lead3').click(function () {
+        var yd = $('.lead3').text();
+        AJ(yd);
+    });
+    $('.lead4').click(function () {
+        var yd = $('.lead4').text();
+        AJ(yd);
+    });
+    $(document).keyup(function(even){
+					if( even.keyCode==13){  //keyCode是键盘代码
+                        var news=$('#dope').val();
+						AJ(news);
+					}
+				});
+$('.sendBtn').on('click',function() {
+    var news1 = $('#dope').val();
+    AJ(news1);
+})
+
+
+    var myTime = setTimeout("Timeout()", 60000);
+function resetTime() {
+    clearTimeout(myTime);
+    myTime = setTimeout('Timeout()', 60000);
+}
+function Timeout() {
+    alert("您的会话已超时，请刷新界面");
+    document.location.href='/paisen/home';
+   $.ajax({
+        type:"POST",
+        url:"/timeout/",
+        async:true,
+        data:{
+            'timeout':'add'
+        },
+        {#success:alert('fff')#}
+    });
+}
+document.documentElement.onkeydown=resetTime;
+document.documentElement.onclick=resetTime;
+</script>
+</body>
+</html>
